@@ -35,12 +35,19 @@ class SyncPlaybackPlugin extends Plugin {
     this.options = videojs.mergeOptions(defaults, options);
 
     this.player.ready(() => {
-      (async function() {
+      (async () => {
       this.player.addClass('vjs-sync-playback-plugin');
 
       const response = await fetch('http://worldclockapi.com/api/json/utc/now');
       const parsed = await response.json();
-      console.log(new Date(parsed.currentDateTime));
+      const serverDate = new Date(parsed.currentDateTime);
+      const localDate = new Date();
+      const localToServerDate = (+serverDate) - (+localDate);
+      console.dir({serverDate, localDate, localToServerDate});
+      setInterval(() => {
+        console.log({currentTime: this.player.currentTime()});
+      }, 1000);
+      console.dir({serverDate, localDate});
       })()
     });
   }
