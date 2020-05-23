@@ -226,7 +226,7 @@
                   this.player.addClass('vjs-sync-playback-plugin');
                   return [4
                   /*yield*/
-                  , fetch('http://worldclockapi.com/api/json/utc/now')];
+                  , fetch('https://worldtimeapi.org/api/timezone/Etc/UTC')];
 
                 case 1:
                   response = _a.sent();
@@ -236,7 +236,7 @@
 
                 case 2:
                   parsed = _a.sent();
-                  serverDate = new Date(parsed.currentDateTime);
+                  serverDate = new Date(parsed.datetime);
                   localDate = new Date();
                   localToServerDate = +serverDate - +localDate;
                   console.dir({

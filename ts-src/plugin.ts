@@ -38,9 +38,9 @@ class SyncPlaybackPlugin extends Plugin {
       (async () => {
       this.player.addClass('vjs-sync-playback-plugin');
 
-      const response = await fetch('http://worldclockapi.com/api/json/utc/now');
+      const response = await fetch('https://worldtimeapi.org/api/timezone/Etc/UTC');
       const parsed = await response.json();
-      const serverDate = new Date(parsed.currentDateTime);
+      const serverDate = new Date(parsed.datetime);
       const localDate = new Date();
       const localToServerDate = (+serverDate) - (+localDate);
       console.dir({serverDate, localDate, localToServerDate});
