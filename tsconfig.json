@@ -1,0 +1,9 @@
+{
+  "include": ["ts-src"],
+  "compilerOptions": {
+    "rootDir": "ts-src",
+    "outDir": "src",
+    "module": "ESNext",
+    "target": "es5"
+  }
+}
